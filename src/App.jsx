@@ -1,6 +1,9 @@
 import React from 'react';
-import { Block } from './Block';
+import axios from 'axios';
+
 import './index.scss';
+
+import { Block } from './Block';
 
 function App() {
   const [fromCurrency, setFromCurrency] = React.useState('USD')
@@ -11,14 +14,15 @@ function App() {
   const ratesRef = React.useRef({})
 
   React.useEffect(() => {
-    fetch('https://www.cbr-xml-daily.ru/latest.js')
-      .then((res) => res.json())
-      .then((json) => {
-        ratesRef.current = json.rates
+    axios
+      .get('https://www.cbr-xml-daily.ru/latest.js')
+      .then(({ data }) => {
+        console.log(data.rates)
+        ratesRef.current = data.rates
         onChangeFromPrice(1)
       })
       .catch((err) => {
-        console.warn(err);
+        console.log(err);
         alert('ERROR TRY TO GET RATES')
       });
   }, []);
