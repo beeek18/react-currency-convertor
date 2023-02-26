@@ -2,7 +2,7 @@
   "name": "counter",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://beeek18.github.io/currency-convertor/",
+  "homepage": "https://beeek18.github.io/react-currency-convertor/",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
